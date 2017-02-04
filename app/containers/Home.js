@@ -15,7 +15,7 @@ class Home extends Component {
 
 
   search() {
-    this.props.fetchRecipes('test,test1')
+    this.props.actions.fetchRecipes('test,test1')
   }
 
   render() {

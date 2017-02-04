@@ -13,7 +13,7 @@ class AppContainer extends Component {
   }
 
   render() {
-    return <Home { ...this.props }/>
+    return <Home {...this.props }/>
   }
 }
 
