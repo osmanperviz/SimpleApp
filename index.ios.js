@@ -4,43 +4,32 @@ import { createStore, applyMiddleware, combineRedurs, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import reducer from './app/reducers'
+import { AppRegistry } from 'react-native';
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './app/sagas'
 
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import AppContainer from './app/containers/AppContainer'
 
 const loggerMiddleware = createLogger({ predicate: (getStae, actions) => __DEV__})
+const sagaMiddleware = createSagaMiddleware();
 
 function configureStore(initialState) {
   const enhancer = compose(
     applyMiddleware(
       thunkMiddleware,
-      loggerMiddleware
+      loggerMiddleware,
+      sagaMiddleware
     ),
   );
   return createStore(reducer, initialState, enhancer)
 }
-
 const store = configureStore({})
+sagaMiddleware.run(rootSaga)
 
-export default class SimpleProject extends Component {
-  render() {
-    return (
-      <View>
-        <Text>
-          ollaa
-        </Text>
-      </View>
-    );
-  }
-}
 
 const App = () => (
   <Provider store={store}>
-    <SimpleProject />
+    <AppContainer />
   </Provider>
 )
 AppRegistry.registerComponent('SimpleProject', () => App);
