@@ -5,7 +5,7 @@ class Api {
       'Content-Type': 'application/json',
       'dataType': 'json',
       'X-Requested-With': 'XMLHttpRequest',
-      'X-Mashape-Key'; 'dfghjkopoiuhgfdfvgbhjkliuytgf'
+      'X-Mashape-Key': 'dfghjkopoiuhgfdfvgbhjkliuytgf'
     }
   }
 
@@ -26,7 +26,8 @@ class Api {
   }
 
   static xhr(route, params, verb) {
-    const host = 'http://spoonaculat-recipe-food-nutrition-v1.p.mashape.com'
+    // const host = 'http://spoonaculat-recipe-food-nutrition-v1.p.mashape.com'
+    const host = 'https://jsonplaceholder.typicode.com'
     const url = `${host}${route}`
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null);
     options.headers = Api.headers
