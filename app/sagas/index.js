@@ -1,7 +1,7 @@
-import  recipeSaga from './recipeSaga'
+import  usersSaga from './usersSaga'
 
 export default function* rootSaga() {
   yield [
-    recipeSaga
+    usersSaga
   ]
 }

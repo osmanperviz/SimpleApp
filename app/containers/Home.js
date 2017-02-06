@@ -1,47 +1,69 @@
 import React , { Component } from 'react'
 import ReactNative from 'react-native'
+import { View, Button, StyleSheet, TouchableHighlight, Text } from 'react-native'
 import { connect } from 'react-redux'
-const {
-  ScrollView,
-  View,
-  Text,
-  TextInput,
-  Image,
-  TouchableHighlight,
-  StyleSheet
-} = ReactNative
+import UserList from '../components/UserList'
+
 
 class Home extends Component {
 
 
-  search() {
-    this.props.actions.fetchRecipes('test,test1')
+  componentWillMount() {
+
   }
 
   render() {
-    return <View>
-      <View>
-        <TouchableHighlight
-          style={{marginTop:20}}
-          onPress={ () => this.search()}
-          >
-          <Text>
-            Serch Recipe
-          </Text>
-        </TouchableHighlight>
+    return<View>
+        <UserList {...this.props} />
+        <View style={styles.footer}>
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              // onPress={() => this.props.actions.fetchUsers()}
+              >
+              <Text>Fetch Users</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
       </View>
-      <ScrollView>
-
-      </ScrollView>
-    </View>
   }
-
 }
+
+const styles =  StyleSheet.create({
+  footer: {
+    flex: 1,
+    flexDirection: 'column',
+     borderTopWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height:150
+  },
+  buttonContainer: {
+    flex:0.1,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 10,
+    flexDirection:'row',
+    height:40,
+    alignItems:'center',
+    width: 100,
+    backgroundColor: '#2E9298',
+     borderRadius: 10,
+     padding: 10,
+     shadowColor: '#000000',
+     shadowOffset: {
+       width: 0,
+       height: 3
+     },
+     shadowRadius: 10,
+     shadowOpacity: 0.25,
+  },
+})
 
 function mapStateToProps(state) {
   return{
-    searchedRecipes: state.searchedRecipes,
-    recipesCount: state.recipesCount
+    users: state.users,
+    usersCount: state.usersCount
   }
 }
 

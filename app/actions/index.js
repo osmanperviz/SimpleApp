@@ -1,5 +1,5 @@
-import * as RecipeActions from './recipes'
+import * as usersActions from './users'
 
 export default ActionsCreators = Object.assign({},
-  RecipeActions
+  usersActions
 )

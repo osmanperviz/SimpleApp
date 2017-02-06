@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import * as recipesReducers from './recipes'
+import * as usersReducer from './users'
 
 export default combineReducers(Object.assign({},
-  recipesReducers
+  usersReducer
 ))
